@@ -11,7 +11,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'courses:courses' %}">Home</a>
                 </li>
-               
+
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'courses:courses' %}">YCForm</a>
                 </li>
@@ -23,14 +23,13 @@
 
 {% if messages %}
 
-    
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show mb-0" role="alert">
     {{ message }}
-    
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
+        <span aria-hidden="true">&times;</span>
     </button>
-    {% endfor %}
-    {% endif %}
-  </div>
+</div>
+{% endfor %}
+{% endif %}

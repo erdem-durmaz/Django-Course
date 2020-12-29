@@ -14,9 +14,7 @@ class CourseForm(forms.Form):
 
 
 class AttendeeForm(forms.Form):
-    courses = Course.objects.all()
-    new_list = [(course.id,course.course_name) for course in courses]
-    course = forms.ChoiceField(choices=new_list,required=False)
+    course = forms.ModelChoiceField(queryset=Course.objects.all())
     name = forms.CharField(max_length=100)
     email = forms.CharField(max_length=200)
     votes = forms.IntegerField()

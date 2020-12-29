@@ -11,9 +11,9 @@ urlpatterns = [
     path('form/', views.get_name, name= 'form'),
     path('', views.get_courses, name= 'courses'),
     path('show-course/<int:course_id>/', views.show_course, name= 'show_course'),
-    path('create-attendee/', views.create_attendee, name= 'create_attendee'),
+    path('create-attendee/<int:course_id>/', views.create_attendee, name= 'create_attendee'),
     path('areyousure/<int:course_id>/', views.areyousure, name= 'areyousure'),
     path('delete-course/<int:course_id>/', views.delete_course, name= 'delete_course'),
     path('delete-attendee/<int:attendee_id>/', views.delete_attendee, name= 'delete_attendee'),
-    path('update-attendee/<int:attendee_id>/', views.update_attendee, name= 'update_attendee'),
+    path('update-attendee/<int:attendee_id>/<int:course_id>', views.update_attendee, name= 'update_attendee'),
 ]

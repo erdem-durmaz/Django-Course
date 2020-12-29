@@ -44,7 +44,7 @@
                                 class="btn btn-danger btn-sm">Delete <i class="fas fa-trash-alt"></i></button></a>
                         <a href="#"><button type="button" class="btn btn-outline-primary btn-sm">Email <i
                                     class="fas fa-envelope-open"></i></button></a>
-                        <a href="{% url 'courses:create_attendee' %}"><button type="button"
+                        <a href="{% url 'courses:create_attendee' course.id %}"><button type="button"
                                 class="btn btn-info btn-sm">Add User <i class="fas fa-user"></i></button></a>
                     </td>
 
