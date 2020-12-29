@@ -88,12 +88,14 @@ def create_attendee(request):
 
         if form2.is_valid():
             new_attendee = Attendee(
-                course = Course.objects.get(pk=int(form2.cleaned_data['course'])),
+                course = Attendee.objects.get(pk=int(form2.cleaned_data['course'])),
                 name = form2.cleaned_data['name'],
                 email = form2.cleaned_data['email'],
                 votes = int(form2.cleaned_data['votes'])
             )
             new_attendee.save()
+            messages.add_message(request,messages.SUCCESS, 'Successfully Added new Attendee')
+            return HttpResponseRedirect(reverse('courses:courses'))
     return render (request,template_name='courses/create-attendee.html',context={'form2':form2})
 
 #Are You Sure?
