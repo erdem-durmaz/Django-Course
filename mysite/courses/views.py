@@ -119,7 +119,7 @@ def update_attendee(request,attendee_id,course_id):
     attendee = get_object_or_404(Attendee,pk=attendee_id)
     course = get_object_or_404(Course,pk=course_id)
     form = AttendeeForm({
-                'course': course.id,
+                'course': course,
                 'name' : attendee.name,
                 'email' : attendee.email,
                 'votes' : attendee.votes,
@@ -127,7 +127,7 @@ def update_attendee(request,attendee_id,course_id):
     if request.method == 'POST':
         form = AttendeeForm(request.POST)
         if form.is_valid():
-            attendee.course = Course.objects.get(pk=form.cleaned_data['course'])
+            attendee.course = form.cleaned_data['course']
             attendee.name = form.cleaned_data['name']
             attendee.email = form.cleaned_data['email']
             attendee.votes = form.cleaned_data['votes']

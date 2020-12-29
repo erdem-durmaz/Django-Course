@@ -7,9 +7,8 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-lg-12 mx-auto ">
-            <h1>{{course.pub_date}} - {{course.course_name}} Details
+            <h1>Course: {{course.course_name}} - Date: {{course.pub_date|date}} Details
                 <a href="{% url 'courses:courses' %}"><button type="button" class="btn btn-success ">Go Back </button></a>
-                
             </h1>
 
             <!--Registered Attendees-->
@@ -40,10 +39,10 @@
                         </td>
                         <td>
                             <a href="{% url 'courses:update_attendee' attendee.id course.id %}"><button type="button"
-                                    class="btn btn-warning btn-sm"><i class="fas fa-user-edit"></i></button></a>
-                            <a href="{% url 'courses:delete_attendee' attendee.id %}"><button type="button" class="btn btn-danger btn-sm"><i
+                                    class="btn btn-warning btn-sm">Edit <i class="fas fa-user-edit"></i></button></a>
+                            <a href="{% url 'courses:delete_attendee' attendee.id %}"><button type="button" class="btn btn-danger btn-sm">Delete <i
                                         class="fas fa-trash-alt"></i></button></a>
-                            <a href="#"><button type="button" class="btn btn-outline-primary btn-sm"><i
+                            <a href="#"><button type="button" class="btn btn-outline-primary btn-sm">Email <i
                                         class="fas fa-envelope-open"></i></button></a>
                         </td>
                     </tr>
@@ -55,7 +54,7 @@
     
 
     <div class="container mx-auto">
-        <h4 class="text-center"> Edit Course Details </h4>
+        <h4 class="text-center"> Edit Course Date and Time </h4>
             <h6 class="text-center"><form action="{% url 'courses:show_course' course.id %}" method="post" novalidate>
                 {% csrf_token %}
                 {{ form}}
