@@ -57,7 +57,7 @@ def get_name(request):
 def get_courses(request):
     courses = Course.objects.all()
     form = CourseForm()
-    messages.add_message(request,messages.SUCCESS,'Page Successfully Loaded')
+    messages.add_message(request,messages.WARNING,'Page Successfully Loaded')
     # Create New Course
     if request.method == 'POST':
         form = CourseForm(request.POST)
