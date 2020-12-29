@@ -26,7 +26,7 @@ SECRET_KEY = 'q=!0tza82$b0d_2v=4=2&3@zt1rw7jc@fp)@qairks9bqgv0wt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['berdushwile.pythonanywhere.com']
 
 
 # Application definition
