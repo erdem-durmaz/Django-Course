@@ -4,12 +4,12 @@ from . import views
 
 app_name = 'courses'
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('index/', views.index, name='index'),
     path('<int:course_id>/', views.detail, name= 'detail'),
     path('<int:course_id>/results', views.results, name= 'results'),
     path('<int:course_id>/vote', views.vote, name= 'vote'),
     path('form/', views.get_name, name= 'form'),
-    path('courses/', views.get_courses, name= 'courses'),
+    path('', views.get_courses, name= 'courses'),
     path('show-course/<int:course_id>/', views.show_course, name= 'show_course'),
     path('create-attendee/', views.create_attendee, name= 'create_attendee'),
     path('areyousure/<int:course_id>/', views.areyousure, name= 'areyousure'),
