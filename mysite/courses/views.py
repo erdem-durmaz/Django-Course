@@ -6,7 +6,7 @@ from django.urls import reverse
 from .forms import AttendeeForm, ContactForm, CourseForm
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
 
 
 def index(request):
@@ -57,7 +57,7 @@ def get_name(request):
 def get_courses(request):
     courses = Course.objects.all()
     form = CourseForm()
-    
+    messages.add_message(request,messages.SUCCESS,'Page Successfully Loaded')
     # Create New Course
     if request.method == 'POST':
         form = CourseForm(request.POST)
