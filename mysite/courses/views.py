@@ -8,7 +8,10 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+def home(request):
+    return render(request,template_name='courses/landing-page.html')
 
+    
 def index(request):
     course_list = Course.objects.order_by('pub_date')
     context = {
