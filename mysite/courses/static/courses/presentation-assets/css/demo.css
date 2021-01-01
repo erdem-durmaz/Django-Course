@@ -58,7 +58,7 @@ body{
 }
 
 .page-description-header{
-    height: 400px;
+    height: 300px;
 }
 
 .ct-heart{
@@ -112,7 +112,7 @@ body{
     max-width: 440px;
     display: block;
     border-radius: 10px;
-    padding: 17vh 80px;
+    padding: 10vh 80px;
     margin: 0 auto;
     
 }
