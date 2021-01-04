@@ -6,6 +6,8 @@ from .models import Email, Quiz, Question, Answers, Choices
 from django import forms
 import requests
 import random
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -75,6 +77,14 @@ def create_quiz(request):
 
 
 def start(request):
+    # for testing
+    if request.user.is_anonymous:
+        print('yes')
+        user = authenticate(request, username='berdushwile', password='948333')
+        login(request, user)
+        print('logged in')
+    # end
+    
     quiz_list = Quiz.objects.all()
     questions = Question.objects.all()
     return render(request, 'emailer/show-quiz.html', {'quiz_list': quiz_list, 'questions': questions})
