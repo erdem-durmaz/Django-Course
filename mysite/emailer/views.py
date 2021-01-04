@@ -1,4 +1,5 @@
-from PIL.Image import Image
+
+from django.contrib import messages
 from django.urls import reverse
 from django.shortcuts import get_object_or_404, render, HttpResponseRedirect, get_list_or_404
 from .forms import QuestionForm, UploadFileForm
@@ -84,7 +85,7 @@ def start(request):
         login(request, user)
         print('logged in')
     # end
-    
+
     quiz_list = Quiz.objects.all()
     questions = Question.objects.all()
     return render(request, 'emailer/show-quiz.html', {'quiz_list': quiz_list, 'questions': questions})
@@ -123,28 +124,34 @@ def conduct_quiz(request, quiz_id):
     # choices =question.choices_set.filter()
 
     if request.method == 'POST':
-        question = get_object_or_404(
-            Question, pk=int(request.POST['question_id']))
-        choice = question.choices_set.filter(
-            answer__contains=request.POST['response']).first()
-        print(f'comment:{choice.comment}')
-        try:
-            answer_object = get_object_or_404(
-                Answers, user=user, quiz=quiz, question=question)
-        except:
-            new_answer = Answers(
-                user=user,
-                quiz=quiz,
-                question=question,
-                correct_choice=question.correct,
-                response=request.POST['response'],
-                comment=choice.comment
-            )
-            new_answer.save()
+        print(request.POST)
+        if 'response' not in request.POST :
+            messages.add_message(request, messages.WARNING,
+                                 'You Did Not Select New Choice')
+            print('no selection')
         else:
-            answer_object.response = request.POST['response']
-            answer_object.save()
-            # print(answer_object)
+            question = get_object_or_404(
+                Question, pk=int(request.POST['question_id']))
+            choice = question.choices_set.filter(
+                answer__contains=request.POST['response']).first()
+            print(f'comment:{choice.comment}')
+            try:
+                answer_object = get_object_or_404(
+                    Answers, user=user, quiz=quiz, question=question)
+            except:
+                new_answer = Answers(
+                    user=user,
+                    quiz=quiz,
+                    question=question,
+                    correct_choice=question.correct,
+                    response=request.POST['response'],
+                    comment=choice.comment
+                )
+                new_answer.save()
+            else:
+                answer_object.response = request.POST['response']
+                answer_object.save()
+                # print(answer_object)
 
     # 'question_object':question  'choices':choices,
     return render(request, 'emailer/take-quiz.html', {'quiz_object': quiz, 'questions': questions})

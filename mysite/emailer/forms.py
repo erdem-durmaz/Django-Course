@@ -1,7 +1,6 @@
 from django.db.models import fields
 from django.forms import forms
 from django.forms.fields import ImageField, FileField 
-from PIL import Image
 from django import forms
 from django.forms import ModelForm
 from django.forms.widgets import Select
