@@ -76,14 +76,14 @@ def create_quiz(request):
 
     return HttpResponseRedirect(reverse('emailer:start'))
 
-
+@login_required()
 def start(request):
     # for testing
-    if request.user.is_anonymous:
-        print('yes')
-        user = authenticate(request, username='berdushwile', password='948333')
-        login(request, user)
-        print('logged in')
+    # if request.user.is_anonymous:
+    #     print('yes')
+    #     user = authenticate(request, username='berdushwile', password='948333')
+    #     login(request, user)
+    #     print('logged in')
     # end
 
     quiz_list = Quiz.objects.all()

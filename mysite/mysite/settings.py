@@ -34,14 +34,17 @@ ALLOWED_HOSTS = ['127.0.0.1','berdushwile.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'emailer',
-    'courses',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'emailer',
+    'courses',
+    'users',
+    'yaratici',
+    'ckeditor',
 ]
 
 
@@ -142,3 +145,9 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = "/media/"
+
+
+LOGIN_REDIRECT_URL = "users:dashboard"
+LOGOUT_REDIRECT_URL = "users:dashboard"
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
